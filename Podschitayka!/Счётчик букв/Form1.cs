@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,8 +20,15 @@ namespace Счётчик_букв
         private void button1_Click(object sender, EventArgs e)
         {
             string d = rich.Text;
-            string s = d.ToLower();
             int result = 0;
+            result = Obrabotchik(d, result);
+            string res = Convert.ToString(result);
+            label2.Text = res;
+        }
+
+        private static int Obrabotchik(string d, int result)
+        {
+            string s = d.ToLower();
             for (int i = 0; i < s.Length; i++)
             {
                 if (s[i] == 'а' || s[i] == 'о' || s[i] == 'у' || s[i] == 'е' || s[i] == 'ё' ||
@@ -29,13 +36,13 @@ namespace Счётчик_букв
                 {
                     result += 1;
                 }
-                if(s[i] == '!')
+                if (s[i] == '!')
                 {
                     break;
                 }
             }
-            string res = Convert.ToString(result);
-            label2.Text= res;
+
+            return result;
         }
 
         private void button2_Click(object sender, EventArgs e)
